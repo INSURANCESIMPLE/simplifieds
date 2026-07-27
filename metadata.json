@@ -1,0 +1,6 @@
+{
+  "name": "Insurance Made Simple",
+  "description": "Comprehensive life insurance, whole life, term, IUL, annuities, and retirement planning website with interactive calculators and scheduling.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
