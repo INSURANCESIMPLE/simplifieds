@@ -1,0 +1,47 @@
+## Layout Fix: Fixed Header Overlap and Grid Alignment
+
+**Context**
+The page layout suffered from content obscuration caused by a fixed navigation bar and an imbalanced 12-column grid layout, preventing the page from achieving a modern, full-width "Studio" aesthetic.
+
+**Diagnostics**
+The following technical issues were identified during the analysis:
+
+*   **Header Overlap:** The `<nav>` element is `fixed` with a height of **117px**, but the `<main>` element only had a `padding-top` of **96px** (`pt-24`), causing 21px of content to be hidden behind the navigation bar.
+*   **Grid Imbalance:** The layout utilized a `grid-cols-12` container where the sidebar was assigned `lg:col-span-5`, but the primary content area had no assigned span, leading to layout collapse on large screens.
+*   **Container Constraints:** The use of `max-w-container-max` restricted the horizontal workspace, diverging from the target full-width application style.
+
+**Actionable Findings**
+*   **Hero Visibility:** The hero `<section>` was physically positioned at `y: 96px`, placing it directly under the `117px` navigation bar.
+*   **Sticky Behavior:** The `lg:sticky` property on the sidebar was ineffective due to the parent grid's improper column distribution.
+
+**Code Fixes**
+The following adjustments were identified as a potential fix for the live page and should be reflected in the source code:
+
+
+`````html
+<!-- 1. Increase padding-top to clear the 117px fixed header -->
+<main class="flex-grow pt-32 px-4 md:px-10 max-w-7xl mx-auto w-full relative z-10">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- 2. Explicitly span the remaining 7 columns for the main content -->
+    <div class="lg:col-span-7 flex flex-col gap-6">
+      <!-- Main Content -->
+    </div>
+
+    <!-- 3. Sidebar with sticky positioning -->
+    <div class="lg:col-span-5 lg:sticky lg:top-28">
+      <!-- Sidebar Content -->
+    </div>
+    
+  </div>
+</main>
+
+`````
+
+
+**Recommendations**
+*   **Viewport Handling:** Update the `#root` container to a flex column with `min-height: 100vh` to ensure the footer remains at the bottom of the viewport on short pages.
+*   **Anchor Offsets:** Add `scroll-padding-top: 117px;` to the `<html>` element to prevent fixed headers from covering content when navigating via anchor links.
+*   **Responsive Variables:** Consider using a CSS variable (e.g., `--nav-height`) for the navigation bar height to dynamically sync the `<main>` element's `padding-top` and the sidebar's `top` offset across breakpoints.
+
+*Note: The code fixes and findings above were identified on a live page in DevTools. When applying them to your codebase, please adapt them to your project's specific technical stack (e.g., Tailwind CSS classes, CSS modules, framework components) rather than applying them as literal CSS overrides.*
