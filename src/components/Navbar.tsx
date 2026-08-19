@@ -20,6 +20,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
     { label: 'Medicare Professor', page: 'medicare' },
     { label: 'Resources', page: 'resources' },
     { label: 'FAQ', page: 'faq' },
+    // New Schedule tab that navigates to the existing consultation view
+    { label: 'Schedule', page: 'consultation' },
   ];
 
   const handleItemClick = (item: (typeof navItems)[0]) => {
@@ -75,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               href="https://www.medicare-professor.com/"
               target="_blank"
               rel="noreferrer"
-              className="bg-secondary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-secondary-container hover:-translate-y-0.5 active:scale-95 transition-all shadow-sm hidden md:flex items-center justify-center min-h-[44px] cursor-pointer gap-1.5"
+              className="bg-secondary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-secondary-container hover:-translate-y-0.5 active:scale-95 transition-transform flex items-center gap-2"
             >
               Learn More
               <span className="material-symbols-outlined text-sm">open_in_new</span>
@@ -83,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
           ) : (
             <button
               onClick={onOpenQuote}
-              className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-all shadow-sm hidden md:flex items-center justify-center min-h-[44px] cursor-pointer"
+              className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-transform"
             >
               Get a Quote
             </button>
@@ -104,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline-variant/30 px-6 py-4 flex flex-col gap-2 shadow-lg animate-in slide-in-from-top duration-200">
+        <div className="lg:hidden bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline-variant/30 px-6 py-4 flex flex-col gap-2 shadow-lg animate-in slide-in-from-top duration-300">
           {navItems.map((item) => {
             const isActive = currentPage === item.page;
             return (
