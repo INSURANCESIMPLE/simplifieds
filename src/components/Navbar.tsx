@@ -20,8 +20,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
     { label: 'Medicare Professor', page: 'medicare' },
     { label: 'Resources', page: 'resources' },
     { label: 'FAQ', page: 'faq' },
-    // New Schedule tab that navigates to the existing consultation view
-    { label: 'Schedule', page: 'consultation' },
+    // Schedule tab opens the static schedule.html page (external), but still maps to the consultation page for active-state
+    { label: 'Schedule', page: 'consultation', isExternal: true, href: '/schedule.html' },
   ];
 
   const handleItemClick = (item: (typeof navItems)[0]) => {
@@ -54,15 +54,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
         <div className="hidden lg:flex items-center justify-evenly flex-1 mx-2 xl:mx-4 max-w-4xl">
           {navItems.map((item) => {
             const isActive = currentPage === item.page;
+            const baseClass = `font-label text-xs xl:text-sm transition-all px-2 xl:px-3 py-1.5 rounded-lg whitespace-nowrap cursor-pointer ${
+              isActive
+                ? 'text-secondary font-bold border-b-2 border-secondary pb-1'
+                : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
+            }`;
+
+            if (item.isExternal && item.href) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={baseClass}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
             return (
               <button
                 key={item.label}
                 onClick={() => handleItemClick(item)}
-                className={`font-label text-xs xl:text-sm transition-all px-2 xl:px-3 py-1.5 rounded-lg whitespace-nowrap cursor-pointer ${
-                  isActive
-                    ? 'text-secondary font-bold border-b-2 border-secondary pb-1'
-                    : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
-                }`}
+                className={baseClass}
               >
                 {item.label}
               </button>
@@ -109,15 +123,30 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
         <div className="lg:hidden bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline-variant/30 px-6 py-4 flex flex-col gap-2 shadow-lg animate-in slide-in-from-top duration-300">
           {navItems.map((item) => {
             const isActive = currentPage === item.page;
+            const btnClass = `text-left font-label text-base py-2.5 px-3 rounded-xl transition-colors cursor-pointer ${
+              isActive
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-on-surface-variant hover:bg-surface-container-low'
+            }`;
+
+            if (item.isExternal && item.href) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={btnClass}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
             return (
               <button
                 key={item.label}
                 onClick={() => handleItemClick(item)}
-                className={`text-left font-label text-base py-2.5 px-3 rounded-xl transition-colors cursor-pointer ${
-                  isActive
-                    ? 'bg-primary/10 text-primary font-bold'
-                    : 'text-on-surface-variant hover:bg-surface-container-low'
-                }`}
+                className={btnClass}
               >
                 {item.label}
               </button>
