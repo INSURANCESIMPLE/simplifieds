@@ -36,7 +36,8 @@ export default function App() {
   };
 
   const handleOpenQuote = () => {
-    window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noreferrer');
+    const newWindow = window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank');
+    if (newWindow) newWindow.opener = null;
   };
 
   return (
