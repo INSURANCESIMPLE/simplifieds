@@ -97,12 +97,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               <span className="material-symbols-outlined text-sm">open_in_new</span>
             </a>
           ) : (
-            <button
-              onClick={onOpenQuote}
+            <a
+              href="https://scheduler.zoom.us/Insurance-Made-Simple"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Schedule an appointment on Zoom"
               className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-transform"
             >
-              Get a Quote
-            </button>
+              Schedule Appointment
+            </a>
           )}
 
           {/* Mobile Hamburger Toggle */}
@@ -165,15 +168,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 <span className="material-symbols-outlined text-sm">open_in_new</span>
               </a>
             ) : (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                className="w-full bg-secondary text-white font-label text-base font-semibold py-3 rounded-xl text-center shadow-sm cursor-pointer"
+              <a
+                href="https://scheduler.zoom.us/Insurance-Made-Simple"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Schedule an appointment on Zoom"
+                className="w-full bg-secondary text-white font-label text-base font-semibold py-3 rounded-xl text-center shadow-sm cursor-pointer flex items-center justify-center"
               >
-                Get a Quote
-              </button>
+                Schedule Appointment
+              </a>
             )}
           </div>
         </div>
