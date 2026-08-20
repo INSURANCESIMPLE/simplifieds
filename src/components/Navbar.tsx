@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Page } from '../types';
 import logoImg from '../assets/images/regenerated_image_1784836028536.png';
 
+const SCHEDULE_APPOINTMENT_URL = 'https://scheduler.zoom.us/Insurance-Made-Simple';
+
 interface NavbarProps {
   currentPage: Page;
   onNavigate: (page: Page) => void;
@@ -90,19 +92,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
             <a
               href="https://www.medicare-professor.com/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="bg-secondary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-secondary-container hover:-translate-y-0.5 active:scale-95 transition-transform flex items-center gap-2"
             >
               Learn More
               <span className="material-symbols-outlined text-sm">open_in_new</span>
             </a>
           ) : (
-            <button
-              onClick={onOpenQuote}
+            <a
+              href={SCHEDULE_APPOINTMENT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Schedule an appointment on Zoom"
               className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-transform"
             >
-              Get a Quote
-            </button>
+              Schedule Appointment
+            </a>
           )}
 
           {/* Mobile Hamburger Toggle */}
@@ -157,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               <a
                 href="https://www.medicare-professor.com/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full bg-secondary text-white font-label text-base font-semibold py-3 rounded-xl text-center shadow-sm cursor-pointer flex items-center justify-center gap-2"
               >
@@ -165,15 +170,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 <span className="material-symbols-outlined text-sm">open_in_new</span>
               </a>
             ) : (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                className="w-full bg-secondary text-white font-label text-base font-semibold py-3 rounded-xl text-center shadow-sm cursor-pointer"
+              <a
+                href={SCHEDULE_APPOINTMENT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Schedule an appointment on Zoom"
+                className="w-full bg-secondary text-white font-label text-base font-semibold py-3 rounded-xl text-center shadow-sm cursor-pointer flex items-center justify-center"
               >
-                Get a Quote
-              </button>
+                Schedule Appointment
+              </a>
             )}
           </div>
         </div>
