@@ -20,8 +20,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
     { label: 'Medicare Professor', page: 'medicare' },
     { label: 'Resources', page: 'resources' },
     { label: 'FAQ', page: 'faq' },
-    // Schedule tab opens the static schedule.html page (external), but still maps to the consultation page for active-state
-    { label: 'Schedule', page: 'consultation', isExternal: true, href: '/schedule.html' },
   ];
 
   const handleItemClick = (item: (typeof navItems)[0]) => {
