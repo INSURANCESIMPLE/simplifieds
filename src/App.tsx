@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Page, BookingDetails } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { QuoteModal } from './components/QuoteModal';
 
 import { HomeView } from './views/HomeView';
 import { WholeLifeView } from './views/WholeLifeView';
@@ -20,7 +19,6 @@ import { TermsView } from './views/TermsView';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<BookingDetails | null>(null);
 
   // Scroll to top when page changes
@@ -37,6 +35,11 @@ export default function App() {
     setCurrentPage('confirmation');
   };
 
+  const handleOpenQuote = () => {
+    const newWindow = window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank');
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="bg-background text-on-background min-h-screen flex flex-col relative overflow-x-hidden">
       {/* Soft Ambient Background Radial Blurs */}
@@ -48,37 +51,37 @@ export default function App() {
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}
-        onOpenQuote={() => setIsQuoteModalOpen(true)}
+        onOpenQuote={handleOpenQuote}
       />
 
       {/* Page Content Canvas */}
       <main className="flex-grow pt-24 px-4 md:px-10 max-w-container-max mx-auto w-full relative z-10">
         {currentPage === 'home' && (
-          <HomeView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <HomeView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'whole-life' && (
-          <WholeLifeView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <WholeLifeView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'term' && (
-          <TermVsWholeView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <TermVsWholeView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'iul' && (
-          <IULView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <IULView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'annuities' && (
-          <AnnuitiesView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <AnnuitiesView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'calculator' && (
-          <CalculatorView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <CalculatorView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'medicare' && (
-          <MedicareView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <MedicareView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'resources' && (
-          <ResourcesView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <ResourcesView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'faq' && (
-          <FAQView onNavigate={handleNavigate} onOpenQuote={() => setIsQuoteModalOpen(true)} />
+          <FAQView onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {currentPage === 'consultation' && (
           <ConsultationView
@@ -92,12 +95,6 @@ export default function App() {
         {currentPage === 'privacy' && <PrivacyView onNavigate={handleNavigate} />}
         {currentPage === 'terms' && <TermsView onNavigate={handleNavigate} />}
       </main>
-
-      {/* Quote Request Modal */}
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-      />
 
       {/* Footer */}
       <Footer onNavigate={handleNavigate} />
