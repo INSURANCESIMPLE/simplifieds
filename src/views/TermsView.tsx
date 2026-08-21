@@ -3,9 +3,18 @@ import { Page } from '../types';
 
 interface TermsViewProps {
   onNavigate: (page: Page) => void;
+  onOpenQuote?: () => void;
 }
 
-export const TermsView: React.FC<TermsViewProps> = ({ onNavigate }) => {
+export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenQuote }) => {
+  const handleRequestQuote = () => {
+    if (onOpenQuote) {
+      onOpenQuote();
+    } else {
+      window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div className="flex flex-col gap-12 pb-20">
       {/* Header Section */}
@@ -61,14 +70,22 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate }) => {
         </section>
       </div>
 
-      <div className="text-center">
+      {/* Bottom CTA Section */}
+      <section className="flex flex-col md:flex-row gap-4 justify-center items-center max-w-3xl mx-auto w-full">
         <button
           onClick={() => onNavigate('home')}
-          className="px-6 py-2.5 bg-primary text-on-primary font-label font-semibold text-sm rounded-full shadow-sm hover:opacity-90"
+          className="px-6 py-2.5 bg-primary text-on-primary font-label font-semibold text-sm rounded-full shadow-sm hover:opacity-90 transition-all cursor-pointer"
         >
           Return Home
         </button>
-      </div>
+        <button
+          onClick={handleRequestQuote}
+          className="px-8 py-2.5 bg-secondary text-on-secondary font-label font-semibold text-sm rounded-full shadow-sm hover:bg-secondary-container transition-all cursor-pointer flex items-center gap-2"
+        >
+          <span className="material-symbols-outlined text-base">quote</span>
+          Request a Custom Quote
+        </button>
+      </section>
     </div>
   );
 };
