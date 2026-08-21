@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
     { label: 'IUL', page: 'iul' },
     { label: 'Annuities', page: 'annuities' },
     { label: 'Calculator', page: 'calculator' },
-    { label: 'Medicare Professor', page: 'medicare' },
+    { label: 'Medicare', page: 'medicare' },
     { label: 'Resources', page: 'resources' },
     { label: 'FAQ', page: 'faq' },
     // Schedule tab opens the static schedule.html page (external), but still maps to the consultation page for active-state
@@ -31,30 +31,26 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
 
   return (
     <nav className="bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm fixed top-0 w-full z-50 left-0 right-0">
-      <div className="flex justify-between items-center min-h-[96px] py-2 px-3 sm:px-6 xl:px-8 max-w-container-max mx-auto w-full">
+      <div className="flex justify-between items-center min-h-[72px] gap-4 py-2 px-3 sm:px-6 xl:px-8 max-w-container-max mx-auto w-full">
         {/* Brand Logo & Title */}
         <div
           onClick={() => onNavigate('home')}
           className="flex items-center gap-3 cursor-pointer group hover:-translate-y-0.5 transition-transform flex-shrink-0 mr-2 xl:mr-4"
         >
-          <div className="w-[200px] h-[100px] flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+          <div className="h-12 md:h-14 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
             <img
               alt="Insurance Made Simple Logo"
-              style={{ width: '200px', height: '100px' }}
-              className="w-[200px] h-[100px] object-contain"
+              className="h-12 md:h-14 w-auto object-contain"
               src={logoImg}
             />
           </div>
-          <span className="text-lg md:text-xl xl:text-[22px] font-headline font-bold text-primary whitespace-nowrap">
-            Insurance Made Simple
-          </span>
         </div>
 
         {/* Desktop Links - Evenly Spaced Across Header */}
-        <div className="hidden lg:flex items-center justify-evenly flex-1 mx-2 xl:mx-4 max-w-4xl">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 mx-2 xl:mx-4 max-w-4xl">
           {navItems.map((item) => {
             const isActive = currentPage === item.page;
-            const baseClass = `font-label text-xs xl:text-sm transition-all px-2 xl:px-3 py-1.5 rounded-lg whitespace-nowrap cursor-pointer ${
+            const baseClass = `font-label text-xs xl:text-sm transition-all px-2.5 py-1.5 rounded-lg whitespace-nowrap cursor-pointer ${
               isActive
                 ? 'text-secondary font-bold border-b-2 border-secondary pb-1'
                 : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
@@ -91,15 +87,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               href="https://www.medicare-professor.com/"
               target="_blank"
               rel="noreferrer"
-              className="bg-secondary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-secondary-container hover:-translate-y-0.5 active:scale-95 transition-transform flex items-center gap-2"
+              className="bg-secondary text-white font-label text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl hover:bg-secondary-container hover:-translate-y-0.5 active:scale-95 transition-transform flex items-center gap-2"
             >
               Learn More
-              <span className="material-symbols-outlined text-sm">open_in_new</span>
+              <span className="material-symbols-outlined text-sm hidden sm:inline">open_in_new</span>
             </a>
           ) : (
             <button
               onClick={onOpenQuote}
-              className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-transform"
+              className="bg-primary text-white font-label text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl hover:bg-primary-container hover:-translate-y-0.5 active:scale-95 transition-transform"
             >
               Get a Quote
             </button>
