@@ -11,7 +11,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQuote }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems: { label: string; page: Page; isExternal?: boolean; href?: string }[] = [
+  const navItems: { label: string; page: Page }[] = [
     { label: 'Term Vs Whole', page: 'term' },
     { label: 'Whole Life', page: 'whole-life' },
     { label: 'IUL', page: 'iul' },
@@ -20,8 +20,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
     { label: 'Medicare', page: 'medicare' },
     { label: 'Resources', page: 'resources' },
     { label: 'FAQ', page: 'faq' },
-    // Schedule tab opens the static schedule.html page (external), but still maps to the consultation page for active-state
-    { label: 'Schedule', page: 'consultation', isExternal: true, href: '/schedule.html' },
   ];
 
   const handleItemClick = (item: (typeof navItems)[0]) => {
@@ -55,18 +53,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 ? 'text-secondary font-bold border-b-2 border-secondary pb-1'
                 : 'text-on-surface-variant hover:text-primary hover:bg-primary/5'
             }`;
-
-            if (item.isExternal && item.href) {
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={baseClass}
-                >
-                  {item.label}
-                </a>
-              );
-            }
 
             return (
               <button
@@ -124,19 +110,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 ? 'bg-primary/10 text-primary font-bold'
                 : 'text-on-surface-variant hover:bg-surface-container-low'
             }`;
-
-            if (item.isExternal && item.href) {
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={btnClass}
-                >
-                  {item.label}
-                </a>
-              );
-            }
 
             return (
               <button
