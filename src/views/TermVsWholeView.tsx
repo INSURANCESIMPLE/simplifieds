@@ -68,7 +68,7 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
           </div>
           <button
             onClick={() => window.print()}
-            className="self-start sm:self-center flex items-center gap-2 px-4 py-2.5 bg-surface-container-low hover:bg-surface-container text-trust-navy font-label text-xs font-bold rounded-xl border border-outline-variant/40 transition-all cursor-pointer shadow-sm"
+            className="self-start sm:self-center flex items-center gap-2 px-4 py-2.5 bg-surface-container-low hover:bg-surface-container text-trust-navy font-label text-xs font-bold rounded-xl border border-outline-variant/50 shadow-sm transition-all cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm">print</span>
             Print / Save Article
@@ -87,9 +87,9 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
           <ul className="space-y-2 text-xs md:text-sm text-slate-700 pl-4 border-l-2 border-primary/20">
             <li><strong>Cost:</strong> Much cheaper — often 5–15x less than whole life for the same coverage amount, especially when you&apos;re younger and healthier</li>
             <li><strong>Cash value:</strong> None. It&apos;s insurance only, no investment/savings component</li>
-            <li><strong>Duration:</strong> Expires at the end of the term. If you die during the term, beneficiaries get the payout. If you outlive it, coverage ends (unless you renew, usually at a much higher rate, or convert)</li>
+            <li><strong>Duration:</strong> Expires at the end of the term. If you die during the term, beneficiaries get the payout. If you outlive it, coverage ends (unless you renew, usually at a higher premium rate based on your new age).</li>
             <li><strong>Flexibility:</strong> Simple — you pick a coverage amount and term length</li>
-            <li><strong>Best fit for:</strong> Covering a specific need with an end date — like income replacement while raising kids, or paying off a mortgage — during years when your family depends most on your income</li>
+            <li><strong>Best fit for:</strong> Covering a specific need with an end date — like income replacement while raising kids, or paying off a mortgage — during years when your family needs maximum protection on a budget.</li>
           </ul>
         </div>
 
@@ -119,7 +119,7 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
             The Common Trade-off Argument
           </h4>
           <p className="text-xs md:text-sm text-amber-950 leading-relaxed">
-            A frequently cited strategy is <strong>&quot;buy term and invest the difference&quot;</strong> — take the premium savings from term insurance and invest it separately (index funds, retirement accounts, etc.), rather than paying for the built-in savings component of whole life. Over long time horizons this often outperforms whole life&apos;s cash value growth, but it requires discipline to actually invest the difference rather than spend it, and it doesn&apos;t provide permanent coverage or the guarantees whole life offers.
+            A frequently cited strategy is <strong>&quot;buy term and invest the difference&quot;</strong> — take the premium savings from term insurance and invest it separately (index funds, mutual funds, retirement accounts). Over 30 years, disciplined investing often accumulates more wealth than a whole life policy&apos;s guaranteed cash value. However, this requires investment discipline and doesn&apos;t offer the guaranteed floor that whole life provides.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
 
         {/* Disclaimer Note */}
         <p className="text-xs text-slate-500 italic pt-3 border-t border-outline-variant/20 leading-relaxed">
-          This is general information, not a personalized recommendation. The right choice depends on your specific goals, budget, and how long you need coverage. A fee-only financial planner or insurance broker who isn&apos;t earning commission on whole life sales can help you run the actual numbers for your situation.
+          This is general information, not a personalized recommendation. The right choice depends on your specific goals, budget, and how long you need coverage. A fee-only financial planner or licensed insurance advisor can help you evaluate your unique situation.
         </p>
       </section>
 
@@ -304,7 +304,7 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
               <span className="material-symbols-outlined group-open:rotate-180 transition-transform text-primary">expand_more</span>
             </summary>
             <p className="mt-4 font-body text-base text-on-surface-variant pt-4 border-t border-outline-variant/20 leading-relaxed">
-              You can borrow against your cash value through tax-free policy loans, use dividends to offset premium costs, or surrender portions of the cash value if cash is needed for emergencies or investments.
+              You can borrow against your cash value through tax-free policy loans, use dividends to offset premium costs, or surrender portions of the cash value if cash is needed for emergencies or investment opportunities.
             </p>
           </details>
         </div>
@@ -329,7 +329,7 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
               </p>
               <button
                 onClick={() => setFormSubmitted(false)}
-                className="px-6 py-2 bg-primary text-on-primary font-label font-semibold rounded-lg text-sm"
+                className="px-6 py-2 bg-primary text-on-primary font-label font-semibold rounded-lg text-sm cursor-pointer"
               >
                 Submit Another Request
               </button>
@@ -400,6 +400,17 @@ export const TermVsWholeView: React.FC<TermVsWholeViewProps> = ({ onNavigate, on
             </form>
           )}
         </div>
+      </section>
+
+      {/* Bottom CTA Section - Request Custom Quote Button */}
+      <section className="flex justify-center items-center max-w-3xl mx-auto w-full">
+        <button
+          onClick={onOpenQuote}
+          className="px-10 py-3 bg-secondary text-on-secondary font-label font-bold text-base rounded-full shadow-md hover:bg-secondary-container transition-all cursor-pointer flex items-center gap-2"
+        >
+          <span className="material-symbols-outlined text-base">quote</span>
+          Request a Custom Quote
+        </button>
       </section>
     </div>
   );
