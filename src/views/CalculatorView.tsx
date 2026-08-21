@@ -384,7 +384,7 @@ export const CalculatorView: React.FC<CalculatorViewProps> = ({ onNavigate, onOp
                 <h4 className="font-headline font-bold text-trust-navy text-base">Talk to Jason York</h4>
                 <p className="font-body text-xs text-slate-600">Review your coverage calculation with a licensed advisor.</p>
                 <button
-                  onClick={() => onNavigate('consultation')}
+                  onClick={() => window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noopener,noreferrer')}
                   className="mt-2 text-secondary font-label text-xs font-extrabold hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-sm">phone_in_talk</span>
