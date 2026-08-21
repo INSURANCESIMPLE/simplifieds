@@ -65,7 +65,7 @@ const FAQS: FAQItem[] = [
   },
 ];
 
-export const FAQView: React.FC<FAQViewProps> = ({ onNavigate }) => {
+export const FAQView: React.FC<FAQViewProps> = ({ onNavigate, onOpenQuote }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Questions');
   const [expandedIds, setExpandedExpandedIds] = useState<string[]>(['1']);
@@ -188,7 +188,7 @@ export const FAQView: React.FC<FAQViewProps> = ({ onNavigate }) => {
           </p>
         </div>
         <button
-          onClick={() => onNavigate('consultation')}
+          onClick={onOpenQuote}
           className="px-8 py-3.5 bg-secondary text-on-secondary font-label font-bold text-sm rounded-xl hover:bg-secondary-container transition-all shadow-md flex items-center gap-2 cursor-pointer whitespace-nowrap"
         >
           <span className="material-symbols-outlined text-base">calendar_month</span>
