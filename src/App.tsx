@@ -22,7 +22,7 @@ export default function App() {
   const [bookingDetails, setBookingDetails] = useState<BookingDetails | null>(null);
 
   const handleOpenQuote = () => {
-    window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noopener,noreferrer');
+    window.open('https://scheduler.zoom.us/medicare-professor', '_blank', 'noopener,noreferrer');
   };
 
   // Scroll to top when page changes
