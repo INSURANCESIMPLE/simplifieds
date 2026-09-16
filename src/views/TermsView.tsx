@@ -11,7 +11,7 @@ export const TermsView: React.FC<TermsViewProps> = ({ onNavigate, onOpenQuote })
     if (onOpenQuote) {
       onOpenQuote();
     } else {
-      window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noopener,noreferrer');
+      window.open('https://scheduler.zoom.us/medicare-professor', '_blank', 'noopener,noreferrer');
     }
   };
 

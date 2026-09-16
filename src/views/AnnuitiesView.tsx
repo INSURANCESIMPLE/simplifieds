@@ -16,7 +16,7 @@ export const AnnuitiesView: React.FC<AnnuitiesViewProps> = ({ onNavigate, onOpen
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.open('https://scheduler.zoom.us/Insurance-Made-Simple', '_blank', 'noopener,noreferrer');
+    window.open('https://scheduler.zoom.us/medicare-professor', '_blank', 'noopener,noreferrer');
   };
 
   return (
